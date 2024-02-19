@@ -1,13 +1,13 @@
 """xyz plugin description"""
 
 usage="""
-   sourmash scripts xyz
+   sourmash scripts color_compare
 """
 
 epilog="""
 See https://github.com/xyz for more examples.
 
-Need help? Have questions? Ask at http://github.com/sourmash/issues!
+Need help? Have questions? Ask at http://github.com/sourmash-bio/sourmash/issues!
 """
 
 import argparse
@@ -67,11 +67,11 @@ class SaveSignatures_XYZ(Base_SaveSignaturesToLocation):
         self.keep.append(ss)
 
 #
-# CLI plugin - supports 'sourmash scripts xyz'
+# CLI plugin - supports 'sourmash scripts color_compare'
 #
 
-class Command_XYZ(CommandLinePlugin):
-    command = 'xyz'             # 'scripts <command>'
+class Command_ColorCompare(CommandLinePlugin):
+    command = 'color_compare'             # 'scripts <command>'
     description = __doc__       # output with -h
     usage = usage               # output with no args/bad args as well as -h
     epilog = epilog             # output with -h
@@ -86,3 +86,7 @@ class Command_XYZ(CommandLinePlugin):
         # code that we actually run.
         super().main(args)
         print('RUNNING cmd', self, args)
+
+
+def color_compare():
+    pass
