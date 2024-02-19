@@ -1,5 +1,7 @@
 # sourmash_plugin_xyz: a template for sourmash plugins
 
+Based on https://github.com/AnneliektH/2023-sourmash-viruses/tree/main/coloring_sourmash.
+
 This is a good place to start if you're writing a plugin for
 [sourmash (sourmash-bio/sourmash/)](https://github.com/sourmash-bio/sourmash/).
 
