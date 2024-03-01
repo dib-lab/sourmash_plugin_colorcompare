@@ -17,6 +17,7 @@ import pandas as pd
 import numpy
 import pylab
 import seaborn as sns
+import matplotlib as plt
 from scipy.cluster.hierarchy import linkage
 
 import sourmash
