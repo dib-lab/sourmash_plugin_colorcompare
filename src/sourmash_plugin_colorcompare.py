@@ -46,23 +46,30 @@ class Command_ColorCompare(CommandLinePlugin):
                              args.output)
 
 
+def set_color_palette(df, col_interest):
+    unique_values = df[col_interest].unique()
+
+    # Choose a seaborn color palette
+    palette = sns.color_palette('Set3', len(unique_values))
+    # convert to hex
+    hex_colors = [plt.colors.to_hex(color) for color in palette]
+    # Generate a dictionary where keys are unique values and values are corresponding colors
+    color_dict = {value: color for value, color in zip(unique_values, hex_colors)}
+    return color_dict
+
 def color_compare(compare_csv, categories_csv, output):
     # set font scale for sns
     sns.set(font_scale=0.1) 
 
+    df = pd.read_csv(compare_csv, sep=',')
+   
+    # open the attributes for each sequence 
+    attr = pd.read_csv(categories_csv, sep=',', index_col=0, header=0, names=["label", "attr"])
+    print(attr)
+
     # set colors for each of the environments
-    colours = {'ocean': 'blue', 
-               'agsoil': 'brown', 
-               'lake': 'yellow', 
-               'peat': 'green',
-              'natsoil': 'orange',
-              'other': 'grey'}
-
-    df= pd.read_csv(compare_csv, sep=',')
-
-    # open the attributes for each sequence (in this case environment it comes from)
-    attr = pd.read_csv(categories_csv, sep=',', index_col=0)
-
+    colours = set_color_palette(attr, 'attr')
+    
     # set index as colnames
     df.index = df.columns
 
@@ -86,7 +93,7 @@ def color_compare(compare_csv, categories_csv, output):
     # merge with the attribute table
     df = pd.merge(df, attr, on='label')
 
-    # make the index names the orignal label names instead of numbers
+    # # make the index names the orignal label names instead of numbers
     df.index = df['label']
 
     # remove the extra label column
