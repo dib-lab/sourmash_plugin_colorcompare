@@ -66,7 +66,6 @@ def color_compare(compare_csv, categories_csv, output):
    
     # open the attributes for each sequence 
     attr = pd.read_csv(categories_csv, sep=',', index_col=0, header=0, names=["label", "attr"])
-    print(attr)
 
     # set colors for each of the environments
     colours = set_color_palette(attr, 'attr')
