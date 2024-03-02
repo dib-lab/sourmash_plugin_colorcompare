@@ -1,5 +1,3 @@
-
-
 # sourmash_plugin_colorcompare
 The color_compare plugin takes the output matrix file from sourmash compare (similarity matrix, csv) and plots a similarity heatmap of the signatures, with on the y-axis colors that correspond to an arbitrary category set by the categories csv, which is the other input file. 
 
