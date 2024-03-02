@@ -1,56 +1,24 @@
-# sourmash_plugin_xyz: a template for sourmash plugins
 
-Based on https://github.com/AnneliektH/2023-sourmash-viruses/tree/main/coloring_sourmash.
 
-This is a good place to start if you're writing a plugin for
-[sourmash (sourmash-bio/sourmash/)](https://github.com/sourmash-bio/sourmash/).
+# sourmash_plugin_colorcompare
+The color_compare plugin takes the output matrix file from sourmash compare (similarity matrix, csv) and plots a similarity heatmap of the signatures, with on the y-axis colors that correspond to an arbitrary category set by the categories csv, which is the other input file. 
 
-Note: plugins were added in [sourmash v4.7.0](https://github.com/sourmash-bio/sourmash/releases/tag/v4.7.0).
-
-## Instructions
-
-You can use this repo as a template repo to create a new plugin!
-
-See [this set of changes](https://github.com/ctb/sourmash_plugin_template_test1/pull/1) for the minimal diff needed to get a plugin working!
-
-### Building from a template:
-
-First, go to [the GitHub page](https://github.com/sourmash-bio/sourmash_plugin_template) and click "Use this template" to create a new repository.
-
-Clone that repository into your development space.
-
-Then, search for all places where 'xyz' is present, and replace
-'xyz' with the name of your plugin.
-
-Next, edit the code in `src/sourmash_plugin_xyz.py` to implement the plugin
-(you'll probably want to change the name of that file, too.)
-
-Then run `pip install .` to install and test your plugin! You can also
-run `pip install -e .` to install it in editable mode, which is more
-convenient for development.
-
-## Examples
-
-[sourmash_plugin_avro](https://github.com/sourmash-bio/sourmash_plugin_avro)
-and
-[sourmash_plugin_load_urls](https://github.com/sourmash-bio/sourmash_plugin_load_urls)
-are two examples you can follow.
-
-## Template docs for new plugin built from this template.
-
-Delete everything from this line on up and put in your new README ;).
-
-# sourmash_plugin_xyz
+Examples of these categories could be:
+1. Phylogenetic information of the signature (e.g. family/genus/species)
+2. Environment that the sequence the sig file was made from originated (e.g. marine, soil, gut)
+3. Treatment of samples that were used to create sig files (if using metagenome reads)
 
 ## Installation
 
 ```
-pip install sourmash_plugin_xyz
+pip install git+https://github.com/dib-lab/sourmash_plugin_colorcompare.git
 ```
 
 ## Usage
 
-non-xyz info goes here!
+```
+sourmash scripts color_compare similarity_matrix.csv categories.csv -o output.png 
+```
 
 ## Support
 
