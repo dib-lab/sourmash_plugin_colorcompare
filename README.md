@@ -13,9 +13,11 @@ pip install git+https://github.com/dib-lab/sourmash_plugin_colorcompare.git
 ```
 
 ## Usage
+
 ```
-sourmash scripts color_compare -h 
+sourmash scripts color_compare similarity_matrix.csv categories.csv -o output.png 
 ```
+
 ## Support
 
 We suggest filing issues in [the main sourmash issue tracker](https://github.com/dib-lab/sourmash/issues) as that receives more attention!
